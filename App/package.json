@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "q",
   "version": "1.0.0",
   "description": "school management system",
   "main": "server.js",
@@ -27,5 +27,6 @@
     "nodemailer": "^6.7.5",
     "nodemon": "^2.0.15",
     "uuid": "^8.3.2"
-  }
+  },
+  "devDependencies": {}
 }
