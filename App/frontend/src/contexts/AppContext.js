@@ -1,8 +1,13 @@
 import React,{useState,useEffect} from "react";
 import { useMediaQuery } from 'react-responsive'
 import {reactLocalStorage} from 'reactjs-localstorage';
+import axios from "axios";
 
 export const AppContext = React.createContext(null);
+
+export const axiosInstance = axios.create({
+  baseUrl: "https://school-admin-app.herokuapp.com/"
+})
 
 export const AppContextProvider = ({ children }) => {
  const [accessUser, setAccessUser] = useState(
@@ -40,7 +45,8 @@ export const AppContextProvider = ({ children }) => {
      setLoginError,
      announcement,
      setAnnouncement,
-     isSmallDevice
+     isSmallDevice,
+     axiosInstance
     }}>
       {children}
     </AppContext.Provider>

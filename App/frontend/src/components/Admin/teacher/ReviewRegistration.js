@@ -1,19 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid} from '@fortawesome/fontawesome-svg-core/import.macro'
 import moment from 'moment';
+import {AppContext} from "../../../contexts/AppContext"
 import {useNavigate } from 'react-router-dom';
-const axios = require('axios');
 
 const ReviewRegistration = ({id,setAdmissionRefresh,admissionRefresh}) => {
  const[application,setApplication] = useState(false)
  const[refresh,setRefresh] = useState(false)
  const[actionError,setActionError] = useState(false)
  const navigate = useNavigate();
+  const {axiosInstance} = useContext(AppContext)
 
   useEffect(() => {
-  axios.get(`/getRegistration/${id}`)
+  axiosInstance.get(`/getRegistration/${id}`)
    .then(function (response) {
     if(response.status === 200){
       setApplication(response.data.data)
@@ -25,7 +26,7 @@ const ReviewRegistration = ({id,setAdmissionRefresh,admissionRefresh}) => {
  }, [id,refresh]); 
 
  const approveApplication = (id) => {
-   axios.post(`/approve-registration/${id}`)
+   axiosInstance.post(`/approve-registration/${id}`)
    .then(function (response) {
     if(response.status === 200){
       setRefresh(!refresh)
@@ -38,7 +39,7 @@ const ReviewRegistration = ({id,setAdmissionRefresh,admissionRefresh}) => {
    });
  }
  const approveReject = () => {
-   axios.post(`/reject-registration/${id}`)
+   axiosInstance.post(`/reject-registration/${id}`)
    .then(function (response) {
     if(response.status === 200){
       setRefresh(!refresh)

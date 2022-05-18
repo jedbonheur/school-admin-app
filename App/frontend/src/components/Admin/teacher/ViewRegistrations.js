@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useContext} from 'react';
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid} from '@fortawesome/fontawesome-svg-core/import.macro'
 import ReviewRegistration from './ReviewRegistration'
 import {useNavigate } from 'react-router-dom';
-const axios = require('axios');
-
+import {AppContext} from "../../../contexts/AppContext"
 
 const ViewTeachers = () => {
  const[applications,setApplication] = useState([])
@@ -17,9 +16,10 @@ const ViewTeachers = () => {
  const[admissionRefresh,setAdmissionRefresh] = useState(false)
  const[emptyResult,setEmptyResult] = useState(false)
  const navigate = useNavigate();
+const {axiosInstance} = useContext(AppContext)
 
  useEffect(() => {
-  axios.get(`/getallregistrations?page=${page}&limit=${limit}`)
+  axiosInstance.get(`/getallregistrations?page=${page}&limit=${limit}`)
    .then(function (response) {
     if(response.status === 200){
       setTotalPages(response.data.totalPages)

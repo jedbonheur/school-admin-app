@@ -7,8 +7,6 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 import * as Yup from 'yup';
 import {useNavigate } from 'react-router-dom';
 
-const axios = require('axios')
-
 // And now we can use these
 const Login = () => {
   const {
@@ -17,7 +15,8 @@ const Login = () => {
      setAuth,
      loginError,
      setLoginError,
-     isSmallDevice
+     isSmallDevice,
+     axiosInstance
  } = useContext(AppContext);
 
  const navigate = useNavigate();
@@ -56,7 +55,7 @@ const Login = () => {
 
           onSubmit={(values) => {
           const formParams = {...values}
-          axios.post('/auth/signin', formParams)
+          axiosInstance.post('/auth/signin', formParams)
           .then(function (response) {
             if(response.status === 200){
               setAuth(true)

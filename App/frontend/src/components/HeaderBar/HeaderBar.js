@@ -9,7 +9,6 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 import {useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown'
 import DropdownNotification from './DropdownNotification';
-const axios = require('axios')
 
 const HeaderBar = () => {
   const {
@@ -25,7 +24,8 @@ const HeaderBar = () => {
      auth,
      setAuth,
      announcement,
-     setAnnouncement
+     setAnnouncement,
+     axiosInstance
   } = useContext(AppContext)
   const [displayDropDown, setDisplayDropDown] = useState(false)
   const [displayDropDownNotify, setDisplayDropDownNotify] = useState(false)
@@ -50,7 +50,7 @@ const HeaderBar = () => {
   useEffect(() => {
     const getUrl = getAnouncementUrl(role())
      if(getUrl !== ''){
-       axios.get(`${getUrl}`)
+       axiosInstance.get(`${getUrl}`)
        .then(function (response) {
          if(response.status === 200){
            setAnnouncement(response.data.data)
@@ -66,7 +66,7 @@ const HeaderBar = () => {
   useEffect(() => {
     const getRoute = getRouteByRole(role())
     if(auth){
-      fetch(`${getRoute}${user_id()}`)
+      axiosInstance.get(`${getRoute}${user_id()}`)
       .then(res=> res.json())
       .then(response => {
         setUser(response.data)

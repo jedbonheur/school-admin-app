@@ -7,7 +7,6 @@ import ClassButton from "../../UIs/ClassButton";
 import {AppContext} from "../../../contexts/AppContext"
 import {useNavigate } from 'react-router-dom';
 
-const axios = require('axios');
 const ManageTeacher = ({id}) => {
  const[teacher,setTeacher] = useState(false)
  const[refresh,setRefresh] = useState(false)
@@ -15,9 +14,9 @@ const ManageTeacher = ({id}) => {
  const[availableClass,setAvailableClass] = useState(false)
  const navigate = useNavigate();
 
- const {isMobile} = useContext(AppContext)
+ const {isMobile,axiosInstance} = useContext(AppContext)
  useEffect(() => {
-  axios.get(`/getTeacher/${id}`)
+  axiosInstance.get(`/getTeacher/${id}`)
    .then(function (response) {
     if(response.status === 200){
       setTeacher(response.data.data)
@@ -29,7 +28,7 @@ const ManageTeacher = ({id}) => {
  }, [id,refresh]); 
  
  useEffect(() => {
-  axios.get(`/allclass/`)
+  axiosInstance.get(`/allclass/`)
    .then(function (response) {
     if(response.status === 200){
       setSchoolClasses(response.data.data)
@@ -60,7 +59,7 @@ const ManageTeacher = ({id}) => {
       courseId : class_id
     }
     //assign a student to a class
-    axios.post(`/assignClassTeacher/${id}`, body)
+    axiosInstance.post(`/assignClassTeacher/${id}`, body)
      
    .then(function (response) {
     if(response.status === 200){
@@ -79,7 +78,7 @@ const ManageTeacher = ({id}) => {
       courseId : CourseId
     }
     //remove a class to a teacher
-    axios.post(`/removeclass-teacher/${teacherId}`, body)
+    axiosInstance.post(`/removeclass-teacher/${teacherId}`, body)
      
    .then(function (response) {
     if(response.status === 200){

@@ -4,12 +4,12 @@ import {AppContext} from '../../contexts/AppContext'
 import { MyTextInput, MySelect, DatePickerField, FileInput} from '../UIs/FormInputs'
 import * as Yup from 'yup';
 import {useNavigate } from 'react-router-dom';
-const axios = require('axios')
 
 // And now we can use these
 const AdminAddAnnouncement = () => {
   const {
   user,
+  axiosInstance
  } = useContext(AppContext);
   const navigate = useNavigate();
   return (
@@ -31,7 +31,7 @@ const AdminAddAnnouncement = () => {
         const id = user._id
          const studentPath = '/add-announcement-students/'
          const teacherPath = '/add-announcement-teachers/'
-        axios.postForm(`${values.destination === 'teachers' ? teacherPath : studentPath}/`+ id, formParams)
+        axiosInstance.postForm(`${values.destination === 'teachers' ? teacherPath : studentPath}/`+ id, formParams)
         .then(function (response) {
           if(response.status === 200){
             navigate("/admin/thankyou", { replace: true, state: 'Your Announcement is now Published !' });

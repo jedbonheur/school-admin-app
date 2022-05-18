@@ -1,15 +1,16 @@
-import React, {useEffect,useState} from 'react';
+import React, {useEffect,useState, useContext} from 'react';
 import { Formik, Form } from 'formik';
 import { MyTextInput, MySelect, MytextArea} from '../../UIs/FormInputs'
 import * as Yup from 'yup';
 import {useNavigate } from 'react-router-dom';
-const axios = require('axios')
+import {AppContext} from "../../../contexts/AppContext"
 
 // And now we can use these
 const AddClassForm = () => {
+  const {axiosInstance} = useContext(AppContext)
   const [instructors,setInstructions] =useState(false)
   useEffect(() => {
-      axios.get('/get-instructors/')
+      axiosInstance.get('/get-instructors/')
           .then(function (response) {
             if(response.status === 200){
               setInstructions(response.data.data)
@@ -44,7 +45,7 @@ const AddClassForm = () => {
 
         onSubmit={(values) => {
         const formParams = {...values}
-        axios.post(`/addCourse/${formParams.instructor}`,formParams)
+        axiosInstance.post(`/addCourse/${formParams.instructor}`,formParams)
         .then(function (response) {
           if(response.status === 200){
             navigate("/admin/thankyou", { replace: true, state: 'Course Successfully Created' });

@@ -1,20 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useContext} from 'react';
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid} from '@fortawesome/fontawesome-svg-core/import.macro'
 import moment from 'moment';
 import {useNavigate } from 'react-router-dom';
+import {AppContext} from "../../../contexts/AppContext"
 
-const axios = require('axios');
 
 const ReviewAdmision = ({id,setAdmissionRefresh,admissionRefresh}) => {
  const[application,setApplication] = useState(false)
  const[refresh,setRefresh] = useState(false)
  const[actionError,setActionError] = useState(false)
  const navigate = useNavigate();
+  const {axiosInstance} = useContext(AppContext)
 
   useEffect(() => {
-  axios.get(`/getApplication/${id}`)
+  axiosInstance.get(`/getApplication/${id}`)
    .then(function (response) {
     if(response.status === 200){
       setApplication(response.data.data)
@@ -26,7 +27,7 @@ const ReviewAdmision = ({id,setAdmissionRefresh,admissionRefresh}) => {
  }, [id,refresh]); 
 
  const approveApplication = (id) => {
-   axios.post(`/admitStudent/${id}`)
+   axiosInstance.post(`/admitStudent/${id}`)
    .then(function (response) {
     if(response.status === 200){
       setRefresh(!refresh)
@@ -39,7 +40,7 @@ const ReviewAdmision = ({id,setAdmissionRefresh,admissionRefresh}) => {
    });
  }
  const approveReject = () => {
-   axios.post(`/rejectApplication/${id}`)
+   axiosInstance.post(`/rejectApplication/${id}`)
    .then(function (response) {
     if(response.status === 200){
       setRefresh(!refresh)

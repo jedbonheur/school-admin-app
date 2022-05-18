@@ -1,15 +1,18 @@
-import React, {useEffect,useState} from 'react';
+import React, {useEffect,useState,useContext} from 'react';
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid} from '@fortawesome/fontawesome-svg-core/import.macro';
 import {CourseStudentList} from  '../../common/HelperFunctions'
 import {useNavigate } from 'react-router-dom';
-const axios = require('axios');
+import {AppContext} from '../../../contexts/AppContext'
+
 const TeacherStats = ({data}) => {
  const[announcement, setAnnouncements] = useState(false)
  const navigate = useNavigate();
+ const {axiosInstance} = useContext(AppContext);
+ 
    useEffect(() => {
-  axios.get(`/get-teacher-announcement/`)
+  axiosInstance.get(`/get-teacher-announcement/`)
     .then(function (response) {
      if(response.status === 200){
        setAnnouncements(response.data.data)

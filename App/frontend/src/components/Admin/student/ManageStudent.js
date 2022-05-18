@@ -7,16 +7,15 @@ import CourseButton from "../../UIs/CourseButton";
 import {AppContext} from "../../../contexts/AppContext"
 import {useNavigate } from 'react-router-dom';
 
-const axios = require('axios');
 const ReviewStudent = ({id}) => {
  const[application,setApplication] = useState(false)
  const[refresh,setRefresh] = useState(false)
  const[schoolClasses,setSchoolClasses] = useState(false)
  const[availableClass,setAvailableClass] = useState(false)
  const navigate = useNavigate();
- const {isMobile} = useContext(AppContext)
+ const {isMobile,axiosInstance} = useContext(AppContext)
  useEffect(() => {
-  axios.get(`/getStudent/${id}`)
+  axiosInstance.get(`/getStudent/${id}`)
    .then(function (response) {
     if(response.status === 200){
       setApplication(response.data.data)
@@ -28,7 +27,7 @@ const ReviewStudent = ({id}) => {
  }, [id,refresh]); 
  
  useEffect(() => {
-  axios.get(`/allclass/`)
+  axiosInstance.get(`/allclass/`)
    .then(function (response) {
     if(response.status === 200){
       setSchoolClasses(response.data.data)
@@ -59,7 +58,7 @@ const ReviewStudent = ({id}) => {
       courseId : class_id
     }
     //assign a student to a class
-    axios.post(`/assignClass/${id}`, body)
+    axiosInstance.post(`/assignClass/${id}`, body)
      
    .then(function (response) {
     if(response.status === 200){
@@ -78,7 +77,7 @@ const ReviewStudent = ({id}) => {
       courseId : CourseId
     }
     //Remove a student to a class
-    axios.post(`/removeclass-student/${studentId}`, body)
+    axiosInstance.post(`/removeclass-student/${studentId}`, body)
      
    .then(function (response) {
     if(response.status === 200){

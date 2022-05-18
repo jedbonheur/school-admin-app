@@ -6,14 +6,17 @@ import AdminStats from "../../Admin/AdminStats"
 import AdminProgress from "../../Admin/AdminProgress"
 import styled from "styled-components";
 import {useNavigate } from 'react-router-dom';
-const axios = require('axios');
 
 
 const AdminHome = () => {
   const[data, setData] = useState(false)
   const navigate = useNavigate();
+  const {
+    axiosInstance,
+    isMobile
+   } = useContext(AppContext);
   useEffect(() => {
-  axios.get(`/get-admin-dashboard/`)
+  axiosInstance.get(`/get-admin-dashboard/`)
     .then(function (response) {
      if(response.status === 200){
        setData(response.data.data)
@@ -25,10 +28,6 @@ const AdminHome = () => {
   }, []); 
 
 
-const {
-  user,
-  isMobile
- } = useContext(AppContext);
  
  return (
   <div>

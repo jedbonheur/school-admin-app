@@ -7,16 +7,17 @@ import TeacherSlides from '../../Teacher/TeacherSlides'
 import TeacherAnnouncementSlide from '../../Teacher/TeacherAnnouncementSlide'
 import {AppContext} from '../../../contexts/AppContext'
 import {useNavigate } from 'react-router-dom';
-const axios = require('axios');
+
 const TeacherHome = () => {
 const[data, setData] = useState(false)
 const {
   accessUser,
-  isMobile
+  isMobile,
+  axiosInstance
  } = useContext(AppContext);
   const navigate = useNavigate();
 useEffect(() => {
-  axios.get(`/get-teacher-dashboard/${accessUser.user_id}`)
+  axiosInstance.get(`/get-teacher-dashboard/${accessUser.user_id}`)
     .then(function (response) {
      if(response.status === 200){
        setData(response.data.data)
@@ -28,7 +29,7 @@ useEffect(() => {
   }, []); 
  const[announcement, setAnnouncements] = useState(false)
    useEffect(() => {
-  axios.get(`/get-teacher-announcement`)
+  axiosInstance.get(`/get-teacher-announcement`)
     .then(function (response) {
      if(response.status === 200){
        setAnnouncements(response.data.data)

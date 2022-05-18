@@ -1,13 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useContext} from 'react';
 import { Formik, Form } from 'formik';
 import { MyTextInput, MySelect, DatePickerField, FileInput} from '../UIs/FormInputs'
 import * as Yup from 'yup';
 import {useNavigate } from 'react-router-dom';
-const axios = require('axios')
-
+import {AppContext} from '../../contexts/AppContext'
 // And now we can use these
 const StudentApplicationForm = () => {
   const navigate = useNavigate();
+  const {
+  axiosInstance
+ } = useContext(AppContext);
   return (
     <>
       <img className="title-image" src='/images/schoolAdminLogo.png' alt='logo'/>
@@ -38,7 +40,7 @@ const StudentApplicationForm = () => {
         onSubmit={(values) => {
         const formParams = {...values}
         
-        axios.postForm('/apply', formParams)
+        axiosInstance.postForm('/apply', formParams)
         .then(function (response) {
           if(response.status === 200){
             navigate("/student-apply/thankyou", { replace: true, state: 'Thank you for your Application' });
