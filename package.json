@@ -2,6 +2,9 @@
   "name": "q",
   "version": "1.0.0",
   "description": "school management system",
+  "engines": {
+    "node": "17.3.0"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
