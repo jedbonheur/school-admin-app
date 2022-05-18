@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid} from '@fortawesome/fontawesome-svg-core/import.macro';
 import {CourseStudentList} from  '../../common/HelperFunctions'
 import {useNavigate } from 'react-router-dom';
-import {AppContext} from '../../../contexts/AppContext'
+import {AppContext} from '../../contexts/AppContext'
 
 const TeacherStats = ({data}) => {
  const[announcement, setAnnouncements] = useState(false)

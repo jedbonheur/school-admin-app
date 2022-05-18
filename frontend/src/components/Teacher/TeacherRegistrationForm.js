@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import { MyTextInput, MySelect, DatePickerField, FileInput} from '../UIs/FormInputs'
 import * as Yup from 'yup';
 import {useNavigate } from 'react-router-dom';
-import {AppContext} from '../../../contexts/AppContext'
+import {AppContext} from '../../contexts/AppContext'
 
 // And now we can use these
 const TeacherRegistrationForm = () => {
