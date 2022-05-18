@@ -10,7 +10,6 @@ const cors = require('cors');
 const path = require('path');
 
 //constants
-const PORT = 4000;
 const mongoURI = process.env.MONGO_URI
 
 //middlewares
@@ -41,10 +40,11 @@ app.get('*', (req, res) => {
     // connect initially while catching errors
 try {
     mongoose.connect(mongoURI).then(()=> {
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT || 4000, () => {
       console.log(`Listening on port ${PORT}`)
     })
   })
+  
 } catch (error) {
     console.log('fail to connect', error)
 }
