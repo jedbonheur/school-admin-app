@@ -177,49 +177,49 @@ const LoginWrapper = styled.div`
     background: #ffffffb5;
     padding: 0px 30px;
     border-radius: 25px;
-    }
-    .login-form {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-    button.login.btn {
+  }
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  button.login.btn {
     margin: 20px auto;
-   }
-   p.errors {
+  }
+  p.errors {
     color: red;
     font-style: italic;
-}
-button.btn.btn-student-apply {
+  }
+  button.btn.btn-student-apply {
     margin: 0 auto;
     padding: 10px 26px;
     font-weight: lighter;
     text-transform: capitalize;
-}
-.student {
-      gap: 10px;
+  }
+  .student {
+    gap: 10px;
     display: flex;
     flex-direction: column;
-}
-.teacher {
-      gap: 10px;
+  }
+  .teacher {
+    gap: 10px;
     display: flex;
     flex-direction: column;
-}
-hr.divider {
+  }
+  hr.divider {
     margin: 12px 0px;
-}
-.entries {
+  }
+  .entries {
     display: flex;
     gap: 2rem;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-img.title-image {
+    flex-direction: ${({isSmallDevice}) => isSmallDevice ? 'column' : 'row' };
+    align-items: ${({isSmallDevice}) => isSmallDevice ? 'center' : 'start' };
+    text-align:  ${({isSmallDevice}) => isSmallDevice ? 'center' : 'left' };
+  }
+  img.title-image {
     width: 300px;
     padding-top: 10px;
-}
+  }
 }
 `
 
