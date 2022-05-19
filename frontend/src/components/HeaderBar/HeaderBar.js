@@ -67,7 +67,6 @@ const HeaderBar = () => {
     const getRoute = getRouteByRole(role())
     if(auth){
       axiosInstance.get(`${getRoute}${user_id()}`)
-      .then(res=> res.json())
       .then(response => {
         setUser(response.data.data)
       })
