@@ -57,7 +57,6 @@ const HeaderBar = () => {
          }
       })
        .catch(err => {
-         console.loga('catch me if u can', err)
          navigate('/page-404')
       })
      }
@@ -70,10 +69,10 @@ const HeaderBar = () => {
       axiosInstance.get(`${getRoute}${user_id()}`)
       .then(res=> res.json())
       .then(response => {
-        setUser(response.data)
+        setUser(response.data.data)
       })
       .catch(err => {
-        console.loga('catch me if u can', err)
+        // console.loga('catch me if u can', err)
          navigate('/page-404')
       })
     }
