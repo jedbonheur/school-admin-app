@@ -27,7 +27,7 @@ const RoutesController = () => {
             />
              <Route exact path="/admin-apply/thankyou" element={<AdminThankYou/>} />
              <Route exact path="/student-apply/thankyou" element={<ApplyThankYou/>} />
-            <Route path="*"element={<Page404 />} />
+            <Route path="*"element='{<Page404 />} '/>
           </Routes>
  );
 };
