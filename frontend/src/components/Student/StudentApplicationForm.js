@@ -12,7 +12,7 @@ const StudentApplicationForm = () => {
  } = useContext(AppContext);
   return (
     <>
-      <img className="title-image" src='/images/schoolAdminLogo.png' alt='logo'/>
+      <img className="title-image" src='/images/shoollogoimage.png' alt='logo'/>
       <h2>Apply as a New Student</h2>
       <Formik
         initialValues={{

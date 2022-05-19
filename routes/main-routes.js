@@ -1361,12 +1361,12 @@ Teacher.updateOne(
   // Nothing to modify below this line
 
   // this is our catch all endpoint.
-  router.get("*", (req, res) => {
-    res.status(404).json({
-      status: 404,
-      message: "This is obviously not what you are looking for."
-    });
-  })
+  // router.get("*", (req, res) => {
+  //   res.status(404).json({
+  //     status: 404,
+  //     message: "This is obviously not what you are looking for."
+  //   });
+  // })
 
 
 module.exports = router;

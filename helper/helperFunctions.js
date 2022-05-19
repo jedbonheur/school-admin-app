@@ -29,7 +29,7 @@ const mailOptions = {
   html: htmlMessage,
   attachments: [{
         filename: 'image.png',
-        path: path.join(__dirname, '../public/images/schoolAdminLogo.png'),
+        path: path.join(__dirname, '../public/images/shoollogoimage.png'),
         cid: 'logo' //same cid value as in the html img src
     }]
 };
