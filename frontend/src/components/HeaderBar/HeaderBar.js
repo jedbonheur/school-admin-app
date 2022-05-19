@@ -117,11 +117,11 @@ const HeaderBar = () => {
               )
             }
           </div>
-          <div className="search-bar">
+          {/* <div className="search-bar">
           <input type="text" placeholder="Search here" name="search">
           </input>
             <FontAwesomeIcon icon={solid('search')} />
-          </div>
+          </div> */}
 
         </div>
         <div className="user-area">
