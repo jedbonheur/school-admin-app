@@ -19,8 +19,6 @@ app.use(cors());
 // This will give us will log more info to the console. see https://www.npmjs.com/package/morgan
 app.use(morgan("tiny"))
 
-// Any requests for static files will go into the public folder
-app.use(express.static("public"))
 
 // use parse body
 app.use(express.json())
