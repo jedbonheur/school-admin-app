@@ -23,7 +23,7 @@ app.use(morgan("tiny"))
 // use parse body
 app.use(express.json())
 
-app.use(express.static(path.join(__dirname, "/frontend/build/")));
+app.use(express.static(path.join(__dirname, "/frontend/build")));
 
 // use routes
 app.use(AuthRoutes)

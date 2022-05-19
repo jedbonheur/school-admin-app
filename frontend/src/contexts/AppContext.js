@@ -6,7 +6,7 @@ import axios from "axios";
 export const AppContext = React.createContext(null);
 
 export const axiosInstance = axios.create({
-  baseUrl: "https://school-admin-app.herokuapp.com/"
+  baseUrl: "https://school-admin-app.herokuapp.com"
 })
 
 export const AppContextProvider = ({ children }) => {
