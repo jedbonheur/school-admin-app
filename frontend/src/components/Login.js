@@ -212,7 +212,9 @@ hr.divider {
 .entries {
     display: flex;
     gap: 2rem;
-    text-align: left;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 img.title-image {
     width: 300px;
