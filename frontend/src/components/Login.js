@@ -212,9 +212,9 @@ const LoginWrapper = styled.div`
   .entries {
     display: flex;
     gap: 2rem;
-    flex-direction: ${({isSmallDevice}) => isSmallDevice ? 'column' : 'row' };
-    align-items: ${({isSmallDevice}) => isSmallDevice ? 'center' : 'start' };
-    text-align:  ${({isSmallDevice}) => isSmallDevice ? 'center' : 'left' };
+    flex-direction: ${({isMobile}) => isMobile ? 'column' : 'row' };
+    align-items: ${({isMobile}) => isMobile ? 'center' : 'start' };
+    text-align:  ${({isMobile}) => isMobile ? 'center' : 'left' };
   }
   img.title-image {
     width: 300px;
