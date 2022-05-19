@@ -63,20 +63,20 @@ const HeaderBar = () => {
     
   }, []);
 
-  // useEffect(() => {
-  //   const getRoute = getRouteByRole(role())
-  //   if(auth){
-  //     axiosInstance.get(`${getRoute}${user_id()}`)
-  //     .then(res=> res.json())
-  //     .then(response => {
-  //       setUser(response.data.data)
-  //     })
-  //     .catch(err => {
-  //       // console.loga('catch me if u can', err)
-  //        navigate('/page-404')
-  //     })
-  //   }
-  // }, [])
+  useEffect(() => {
+    const getRoute = getRouteByRole(role())
+    if(auth){
+      axiosInstance.get(`${getRoute}${user_id()}`)
+      .then(res=> res.json())
+      .then(response => {
+        setUser(response.data.data)
+      })
+      .catch(err => {
+        console.log('catch me if u can', err)
+         navigate('/page-404')
+      })
+    }
+  }, [])
 
   if(user.length === 0) {
       return
