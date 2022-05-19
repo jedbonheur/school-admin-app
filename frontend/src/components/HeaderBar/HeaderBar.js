@@ -57,6 +57,7 @@ const HeaderBar = () => {
          }
       })
        .catch(err => {
+         console.loga('catch me if u can', err)
          navigate('/page-404')
       })
      }
@@ -72,6 +73,7 @@ const HeaderBar = () => {
         setUser(response.data)
       })
       .catch(err => {
+        console.loga('catch me if u can', err)
          navigate('/page-404')
       })
     }
