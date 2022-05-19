@@ -11,6 +11,7 @@ const path = require('path');
 
 //constants
 const mongoURI = process.env.MONGO_URI
+const PORT = process.env.PORT
 
 //middlewares
 // app.use(fileUpload());
@@ -44,7 +45,6 @@ try {
       console.log(`Listening on port ${PORT}`)
     })
   })
-  
 } catch (error) {
     console.log('fail to connect', error)
 }
