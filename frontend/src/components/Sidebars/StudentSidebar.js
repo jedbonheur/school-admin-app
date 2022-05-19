@@ -50,16 +50,6 @@ const Sidebar = () => {
          </NavLink>
        </li>
        <li>
-         <NavLink
-          className={({ isActive }) => isActive ? "activeLink" : ""}
-          to='/student/apply'>
-         <span className="icon">
-             <FontAwesomeIcon icon={solid('paper-plane')} />
-          </span>
-          <span className="navigation_item">Apply</span>
-         </NavLink>
-       </li>
-       <li>
           <NavLink
           className={({ isActive }) => isActive ? "activeLink" : ""}
           to='/student/applications'>
