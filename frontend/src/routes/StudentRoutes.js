@@ -12,7 +12,7 @@ const StudentRoutes = () => {
             <Route exact path="/student/applications" element={<Application/>} />
             <Route exact path="/student/courses" element={<Courses/>} />
             <Route exact path="/student/thankyou" element={<ThankYou/>} />
-            <Route exact path="/" element={<StudentHome/>}/>
+            <Route exact path="/student/home" element={<StudentHome/>}/>
             <Route exact path="/page-404"element={<Page404 />} />
             <Route path="*"element={<Page404 />} />
           </Routes>

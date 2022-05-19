@@ -66,7 +66,7 @@ const Login = () => {
               user_id: response.data.data._id,
               });
               setAccessUser(reactLocalStorage.getObject('userAccess'))
-              navigate('/', {replace: true})
+              navigate('/student/home', {replace: true})
             }
           })
           .catch(function (error) {
